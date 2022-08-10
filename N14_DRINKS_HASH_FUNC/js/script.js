@@ -16,10 +16,9 @@ class HashStorageFunc {
 
 	getValue = function(key) {
 
-		if (key in this.bar_){
+		
 		return this.bar_[key];
-		}
-		return "Нет такого!";
+		
 	}
 
 
@@ -82,7 +81,8 @@ function butGetValue(){
 function butDeleteValue(){
 
 	let key=prompt('Введите название напитка:');
-	console.log(drinkStorage.deleteValue(key));
+	console.log(
+		(drinkStorage.deleteValue(key))? "Напиток "+key+ " удален" : "Такого напитка и не было" );
 
 
 
