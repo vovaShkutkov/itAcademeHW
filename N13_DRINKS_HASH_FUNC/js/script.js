@@ -8,15 +8,16 @@ function HashStorageFunc() {
 
 		
 		this.bar_[key]=value;
-		alert('Напиток "'+key+'" добавлен в базу');
+		
 
 	}
 
 	this.getValue = function(key) {
 
-		
-		console.log('Выбранный напиток "'+key+'" :');
-		console.log(this.bar_[key]);
+		if (key in this.bar_){
+		return this.bar_[key];
+		}
+		return "Нет такого!";
 	}
 
 
@@ -25,25 +26,17 @@ function HashStorageFunc() {
 		if(key in this.bar_){
 		
 		delete this.bar_[key] ;
-		console.log(true);
-		alert('Выбранный напиток "'+key+'" удален');
+		return true;
+		
 		}else{
-			console.log(false);
-			alert('Такого напитка нет в базе')
+			return false;
+			
 		}
 	}
 
 	this.getKeys  = function() {
 
-		var drinks=[];
-
-		for (this.drinkName in this.bar_){
-			
-			drinks.push(this.drinkName);
-		}
-
-		document.getElementById("coctails").innerHTML=drinks;
-		console.log(drinks);
+		return Object.keys(this.bar_);
 
 		
 	}
@@ -68,16 +61,17 @@ function butAddValue() {
 		value = {alco , receipt};
  	}
 
- 	
+ 	 	drinkStorage.addValue(key, value);
 
- 	drinkStorage.addValue(key, value);
+	 alert('Напиток "'+key+'" добавлен в базу');
 
  } 
 
 function butGetValue(){
 
 	let key=prompt('Введите название напитка:');
-	drinkStorage.getValue(key);
+	console.log('Информация о напитке "'+key+'" :');
+	console.log(drinkStorage.getValue(key));
 
 
 
@@ -86,7 +80,8 @@ function butGetValue(){
 function butDeleteValue(){
 
 	let key=prompt('Введите название напитка:');
-	drinkStorage.deleteValue(key);
+	console.log(drinkStorage.deleteValue(key));
+
 
 
 
@@ -95,7 +90,7 @@ function butDeleteValue(){
 function butGetKeys(){
 
 	
-	drinkStorage.getKeys();
+	console.log(drinkStorage.getKeys());
 
 
 }
