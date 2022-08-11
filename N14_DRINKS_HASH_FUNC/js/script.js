@@ -6,7 +6,7 @@ class HashStorageFunc {
 	this.bar_={};
 	}
 
-	addValue = function(key, value) {
+	addValue(key, value) {
 
 		
 		this.bar_[key]=value;
@@ -14,7 +14,7 @@ class HashStorageFunc {
 
 	}
 
-	getValue = function(key) {
+	getValue(key) {
 
 		
 		return this.bar_[key];
@@ -22,7 +22,7 @@ class HashStorageFunc {
 	}
 
 
-	deleteValue  = function(key) {
+	deleteValue(key) {
 
 		if(key in this.bar_){
 		
@@ -35,7 +35,7 @@ class HashStorageFunc {
 		}
 	}
 
-	getKeys  = function() {
+	getKeys() {
 
 		return Object.keys(this.bar_);
 
