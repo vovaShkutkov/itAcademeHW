@@ -64,8 +64,6 @@ function butGetValue(){
 
 	let key=prompt('Введите название напитка:');
 		
-		drinkStorage.getValue(key);
-
 	var	drinkName = drinkStorage.getValue(key);
 
 	if ( drinkName === undefined){
