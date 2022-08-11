@@ -57,7 +57,7 @@ function butAddValue() {
 			
 	if(key !==null){
 
-		let alco=confirm('Он алкогольный?')? "Алгокольный" : "Не алкогольный";
+		let alco=confirm('Он алкогольный?')? "Алгокольный!" : "Не алкогольный.";
 		let receipt=prompt('Введите ингридиенты напитка:');
 		value = {alco , receipt};
  	}
@@ -71,8 +71,16 @@ function butAddValue() {
 function butGetValue(){
 
 	let key=prompt('Введите название напитка:');
-	console.log('Информация о напитке "'+key+'" :');
-	console.log(drinkStorage.getValue(key));
+		
+		drinkStorage.getValue(key);
+
+	var	drinkName = drinkStorage.getValue(key);
+
+	if ( drinkName === undefined){
+		alert("Такого напитка нет" );
+	}else{
+		alert('Напиток '+drinkName.alco+'\n'+'Состоит из : '+drinkName.receipt+'.');
+	};
 
 
 
@@ -81,7 +89,7 @@ function butGetValue(){
 function butDeleteValue(){
 
 	let key=prompt('Введите название напитка:');
-	console.log(
+	alert(
 		(drinkStorage.deleteValue(key))? "Напиток "+key+ " удален" : "Такого напитка и не было" );
 
 
@@ -92,7 +100,7 @@ function butDeleteValue(){
 function butGetKeys(){
 
 	
-	console.log(drinkStorage.getKeys());
+	alert(drinkStorage.getKeys());
 
 
 }
