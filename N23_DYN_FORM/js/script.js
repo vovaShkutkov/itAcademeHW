@@ -42,9 +42,72 @@ function AddForms(formName, discr){
         break;
       }
 
+      case 'check':{
+        let block=document.createElement('div');
+        formName.appendChild(block);
+        block.innerHTML=elem.label;
+        let elemInput=document.createElement('input');
+        elemInput.type='checkbox';
+        elemInput.checked='true';
+        elemInput.name=elem.name;
+        block.append(elemInput);
 
-    }
-  
+        break;
+      }
+
+      case 'radio':{
+
+        let block=document.createElement('div');
+        formName.appendChild(block);
+        let elemLabel=document.createElement('div');
+        elemLabel.innerHTML=elem.label;
+        block.appendChild(elemLabel);
+
+        let mas=elem.variants;
+        for(let i=0; i<mas.length; i++){
+          
+          let radElem=document.createElement('input');
+          radElem.type=elem.kind;
+          radElem.name=elem.name;
+          radElem.value=mas[i].value;
+          let radSp=document.createElement('span');
+          radSp.innerHTML=mas[i].text;
+          elemLabel.append(radElem, radSp);
+
+        }
+ 
+        break;
+      }
+
+      case 'combo':{
+
+        let block=document.createElement('div');
+        formName.appendChild(block);
+        let blockP=document.createElement('p');
+        blockP.innerHTML=elem.label;
+        let blockSel=document.createElement('select');
+        block.appendChild(blockP);
+        blockP.appendChild(blockSel);
+
+        let mas=elem.variants;
+
+        for(let i=0; i<mas.length; i++){
+
+          let selectOption=document.createElement('option');
+          selectOption.value=i+1;
+          selectOption.innerHTML=mas[i].text;
+          blockSel.appendChild(selectOption);
+
+        }
+
+        break;
+
+      }
+      
+
+
+    
+     }
   
   });
 
