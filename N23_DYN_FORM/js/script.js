@@ -1,6 +1,6 @@
 'use strict';
 
-function AddForms(formName, discr){
+function addForms(formName, discr){
 
   discr.forEach(elem =>{
     
