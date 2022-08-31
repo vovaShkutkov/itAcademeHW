@@ -226,12 +226,12 @@ function validForm(eo){
     console.log('Не заполнено полей :'+errValid.length);
     console.log(errValid);
 
-    if(errValid.lenght=0 ){
+    if(errValid.length==0 ){
 
         alert('Ошибок нет, форма отправлена'); 
     }else{
         
-
+        alert('Ошибки в форме, форма не отправлена');
         event.preventDefault(); 
             errValid[0].focus();
        
