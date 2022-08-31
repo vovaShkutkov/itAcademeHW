@@ -119,7 +119,7 @@ function validMail(){ //проверка что точно введен адре
 
 }
 
-function validCatalog(){
+function validCatalog(){ //проверка на верно ли выбран элемент из выпадающего списка
 
     const validCatalog=addSiteForm.elements.catalog;
 
@@ -138,7 +138,7 @@ function validCatalog(){
  
 }
 
-function validReplacement(){
+function validReplacement(){ //проверка по указанному значению 
 
     const validReplacement=document.querySelectorAll('input[name="placement"]');
 
@@ -170,7 +170,7 @@ function validReplacement(){
 
 }
 
-function validPermit(){
+function validPermit(){ //проверка на checked/unchecked
 
     const validPermit=document.getElementById('permit');
 
@@ -189,7 +189,7 @@ function validPermit(){
 
 }
 
-function validDiscr(){
+function validDiscr(){ //проверяем на миним. длину отзыва 
 
     const validDiscr=document.getElementById('description');
 
