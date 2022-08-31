@@ -232,7 +232,7 @@ function validForm(eo){
     }else{
         
         alert('Ошибки в форме, форма не отправлена');
-        event.preventDefault(); 
+        eo.preventDefault(); 
             errValid[0].focus();
        
          
