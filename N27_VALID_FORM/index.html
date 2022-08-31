@@ -40,8 +40,9 @@
         <span id="errAdressMail"></span><br>
 
         <label for="catalog">Рубрика каталога:</label>
-        <select name="catalog" id="catalog" onchange="validCatalog()">
+        <select name="catalog" id="catalog" onchange="validCatalog()" >
 
+            <option selected disabled>Выберите тему:</option>
             <option value="1">здоровье</option>
             <option value="2">домашний уют</option>
             <option value="3">бытовая техника</option>
@@ -49,21 +50,25 @@
         </select>
         <span id="errCatalog"></span>
 
-        <p>Размещение: 
-               
-            <input type="radio" id="but1" name="placement" value="1"><label for="but1">бесплатное</label>
-            <input type="radio" id="but2" name="placement" value="2"><label for="but2">платное</label>
-            <input type="radio" id="but3" name="placement" value="3"><label for="but3">VIP</label>
+        <p >Размещение: 
+              
+            <input type="radio" id="but1" name="placement" value="1" onchange="validReplacement()">
+            <label for="but1" >бесплатное</label>
+            <input type="radio" id="but2" name="placement" value="2" onchange="validReplacement()">
+            <label for="but2">платное</label>
+            <input type="radio" id="but3" name="placement" value="3" onchange="validReplacement()">
+            <label for="but3">VIP</label>
             <span id="errPlacement"></span>
 
         </p><br>
 
         <label for="permit">Разрешить отзывы:</label>
-        <input type="checkbox" name="permit" >
+        <input type="checkbox" name="permit" id="permit" onchange="validPermit()">
         <span id="errPermit"></span><br>
 
-        <p>Описание сайта:</p><span id="errDescription"></span>
-        <textarea style="width: 350px; height: 100px;" id="description" name='description'></textarea><br>
+        <p>Описание сайта: <span id="errDescription"></span></p>
+        <textarea style="width: 350px; height: 100px;"
+         id="description" name='description' onblur="validDiscr()"></textarea><br>
 
         <input type="button" value="Опубликовать" name="publicButton" id="publicButton" onclick="validForm()">
         
@@ -73,3 +78,5 @@
     
 </body>
 </html>
+
+

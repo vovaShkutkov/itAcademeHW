@@ -99,11 +99,11 @@ function validVisitors(){ //проверка что введено число
 
 function validMail(){ //проверка что точно введен адрес эл. почты
 
-    const validDevInput=document.getElementById('adressMail');
+    const validMail=document.getElementById('adressMail');
 
     
 
-    if(validDevInput.value.includes('@')){
+    if(validMail.value.includes('@')){
 
         const errValidMail=document.getElementById('errAdressMail');
         errValidMail.innerHTML='';
@@ -113,6 +113,7 @@ function validMail(){ //проверка что точно введен адре
 
         const errValidMail=document.getElementById('errAdressMail');
         errValidMail.innerHTML='*Введите адрес эл. почты';
+        errValid.push(validMail);
 
     }
 
@@ -122,25 +123,116 @@ function validCatalog(){
 
     const validCatalog=addSiteForm.elements.catalog;
 
-    console.log(validCatalog.value);
+         
+    if(validCatalog.value!=2){
+        const errValidCatalog=document.getElementById('errCatalog');
+        errValidCatalog.innerHTML='*Выбрано не верное значение';
+       errValid.push(validCatalog);
+    }else{
+       const errValidCatalog=document.getElementById('errCatalog');
+       errValidCatalog.innerHTML='';
+    }   
+        
 
-    switch
+    
+ 
+}
+
+function validReplacement(){
+
+    const validReplacement=document.querySelectorAll('input[name="placement"]');
+
+    let valueValidReplacement=0;
+
+    for (let i=0; i<validReplacement.length; i++){
+        if(validReplacement[i].checked){
+            valueValidReplacement=validReplacement[i].value;
+            
+        }else{
+            
+        }
+    }
+
+    if(valueValidReplacement<3){
+
+        const errValidPlacement=document.getElementById('errPlacement');
+        errValidPlacement.innerHTML='*Выбрано не верное значение';
+        errValid.push(valueValidReplacement);
+
+    }else{
+
+        const errValidPlacement=document.getElementById('errPlacement');
+        errValidPlacement.innerHTML='';
+
+    }
+
+    
 
 }
 
-function validForm(eo){
+function validPermit(){
+
+    const validPermit=document.getElementById('permit');
+
+    
+    
+        if(validPermit.checked){
+            const errValidPermit=document.getElementById('errPermit');
+            errValidPermit.innerHTML='';
+        }else{
+            // console.log('не чекнут');
+            const errValidPermit=document.getElementById('errPermit');
+            errValidPermit.innerHTML='*Выбрано не верное значение';
+            errValid.push(validPermit);
+        }  
+    
+
+}
+
+function validDiscr(){
+
+    const validDiscr=document.getElementById('description');
+
+    if(((validDiscr.value).length)<10){
+        const errValidDiscr=document.getElementById('errDescription');
+        errValidDiscr.innerHTML='Введите минимум 10 символов';
+        errValid.push(validDiscr);
+    }else{
+        const errValidDiscr=document.getElementById('errDescription');
+        errValidDiscr.innerHTML='';
+    }
+
+
+}
+
+function validForm(){
 
     errValid.length=0; //очищаем массив каждый раз при нажатии на кнопку (вызове функции)
+    
 
     validDev();
     validSiteName();
     validDate();
     validVisitors();
     validMail();
+    validCatalog();
+    validReplacement();
+    validPermit();
+    validDiscr()
 
-    //errValid[0].focus();
+    console.log('Не заполнено полей :'+errValid.length);
+    console.log(errValid);
 
-    //console.log(errValid[0]);
+    if(errValid.lenght=0 ){
+
+        alert('Ошибок нет, форма отправлена'); 
+    }else{
+        
+            errValid[0].focus();
+       
+         
+    }
+    
 }
 
 
