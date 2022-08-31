@@ -152,8 +152,9 @@ function validReplacement(){ //проверка по указанному зна
             
         }
     }
-
-    if(valueValidReplacement<3){
+    
+    let rightAnswer=3;
+    if(valueValidReplacement<rightAnswer){
 
         const errValidPlacement=document.getElementById('errPlacement');
         errValidPlacement.innerHTML='*Выбрано не верное значение';
@@ -205,7 +206,9 @@ function validDiscr(){ //проверяем на миним. длину отзы
 
 }
 
-function validForm(){
+function validForm(eo){
+
+    eo=eo||window.event;
 
     errValid.length=0; //очищаем массив каждый раз при нажатии на кнопку (вызове функции)
     
@@ -228,6 +231,8 @@ function validForm(){
         alert('Ошибок нет, форма отправлена'); 
     }else{
         
+
+        event.preventDefault(); 
             errValid[0].focus();
        
          
