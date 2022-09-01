@@ -127,7 +127,7 @@ function validCatalog(){ //проверка на верно ли выбран э
     if(validCatalog.value!=2){
         const errValidCatalog=document.getElementById('errCatalog');
         errValidCatalog.innerHTML='*Выбрано не верное значение';
-       errValid.push(validCatalog);
+        errValid.push(validCatalog);
     }else{
        const errValidCatalog=document.getElementById('errCatalog');
        errValidCatalog.innerHTML='';
@@ -141,29 +141,38 @@ function validCatalog(){ //проверка на верно ли выбран э
 function validReplacement(){ //проверка по указанному значению 
 
     const validReplacement=document.querySelectorAll('input[name="placement"]');
-
+    const forFocus=document.getElementById('validReplacementAnchor');
+    
     let valueValidReplacement=0;
-
+    
     for (let i=0; i<validReplacement.length; i++){
         if(validReplacement[i].checked){
             valueValidReplacement=validReplacement[i].value;
+          
+            
             
         }else{
             
         }
     }
+
     
-    let rightAnswer=3;
+    let rightAnswer=3; //избавляемся от мэджикнамбер
     if(valueValidReplacement<rightAnswer){
 
         const errValidPlacement=document.getElementById('errPlacement');
         errValidPlacement.innerHTML='*Выбрано не верное значение';
-        errValid.push(valueValidReplacement);
+        
+        
+        errValid.push(forFocus);
+        
 
     }else{
 
         const errValidPlacement=document.getElementById('errPlacement');
         errValidPlacement.innerHTML='';
+        forFocus.style.border='';
+        forFocus.style.width='';
 
     }
 
@@ -221,7 +230,7 @@ function validForm(eo){
     validCatalog();
     validReplacement();
     validPermit();
-    validDiscr()
+    validDiscr();
 
     console.log('Не заполнено полей :'+errValid.length);
     console.log(errValid);
@@ -232,11 +241,9 @@ function validForm(eo){
     }else{
         
         alert('Ошибки в форме, форма не отправлена');
-        event.preventDefault(); 
-            errValid[0].focus();
-       
-         
-    }
+        errValid[0].focus();
+        eo.preventDefault();
+        }
     
 }
 

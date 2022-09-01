@@ -50,17 +50,25 @@
         </select>
         <span id="errCatalog"></span>
 
-        <p >Размещение: 
+        <div id="validReplacementAnchor">Размещение: 
               
-            <input type="radio" id="but1" name="placement" value="1" onchange="validReplacement()">
-            <label for="but1" >бесплатное</label>
-            <input type="radio" id="but2" name="placement" value="2" onchange="validReplacement()">
-            <label for="but2">платное</label>
-            <input type="radio" id="but3" name="placement" value="3" onchange="validReplacement()">
-            <label for="but3">VIP</label>
+            
+            <label>
+                <input type="radio" id="but1" name="placement" value="1" onchange="validReplacement()"> 
+                бесплатное</label>
+            
+            <label>
+                <input type="radio" id="but2" name="placement" value="2" onchange="validReplacement()">
+                платное
+            </label>
+            
+            <label>
+                <input type="radio" id="but3" name="placement" value="3" onchange="validReplacement()">
+                VIP
+            </label>
             <span id="errPlacement"></span>
 
-        </p><br>
+        </div><br>
 
         <label for="permit">Разрешить отзывы:</label>
         <input type="checkbox" name="permit" id="permit" onchange="validPermit()">
