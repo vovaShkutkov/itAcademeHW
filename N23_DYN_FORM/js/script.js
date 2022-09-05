@@ -144,7 +144,7 @@ function addForm1(){
 
   let f1=document.forms.form1;
 
-  AddForms(f1, formDef1);
+  addForms(f1, formDef1);
 
 }
 
@@ -152,6 +152,6 @@ function addForm2(){
 
   let f2=document.forms.form2;
 
-  AddForms(f2, formDef2);
+  addForms(f2, formDef2);
 
 }
