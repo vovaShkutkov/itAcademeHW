@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALID_FORM</title>
+    <script src="js/script.js"></script>
+    <style>
+        span{
+
+            color: red;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <p>Для внесения вашего сайта в каталог, заполните форму:</p>
+
+    <form method="post" action="https://fe.it-academy.by/TestForm.php" name="addSiteForm">
+        <label for="name">Разработчики :</label>
+        <input type="text" name="dev" id="dev" onblur="validDev()" placeholder="Иванов, Петров, Сидоров">
+        <span id="errDev"></span><br>
+
+        <label for="siteName">Название сайта:</label>
+        <input type="text" name="siteName" id="siteName" onblur="validSiteName()" placeholder="Диалоги о рыбалке">
+        <span id="errSiteName"></span><br>
+
+        <label for="date">Дата запуска сайта:</label>
+        <input type="date" name="date"" id="date" onblur="validDate()">
+        <span id="errDate"></span><br>
+
+        <label for="countVisitors">Посетителей в сутки:</label>
+        <input type="text" name="countVisitors" id="countVisitors" placeholder="1000" onblur="validVisitors()">
+        <span id="errCountVisitors"></span><br>
+
+        <label for="adressMail">E-mail для связи:</label>
+        <input type="email" name="adressMail" id="adressMail" onblur="validMail()">
+        <span id="errAdressMail"></span><br>
+
+        <label for="catalog">Рубрика каталога:</label>
+        <select name="catalog" id="catalog" onchange="validCatalog()" >
+
+            <option selected disabled>Выберите тему:</option>
+            <option value="1">здоровье</option>
+            <option value="2">домашний уют</option>
+            <option value="3">бытовая техника</option>
+
+        </select>
+        <span id="errCatalog"></span>
+
+        <div id="validReplacementAnchor">Размещение: 
+              
+            
+            <label>
+                <input type="radio" id="but1" name="placement" value="1" onchange="validReplacement()"> 
+                бесплатное</label>
+            
+            <label>
+                <input type="radio" id="but2" name="placement" value="2" onchange="validReplacement()">
+                платное
+            </label>
+            
+            <label>
+                <input type="radio" id="but3" name="placement" value="3" onchange="validReplacement()">
+                VIP
+            </label>
+            <span id="errPlacement"></span>
+
+        </div><br>
+
+        <label for="permit">Разрешить отзывы:</label>
+        <input type="checkbox" name="permit" id="permit" onchange="validPermit()">
+        <span id="errPermit"></span><br>
+
+        <p>Описание сайта: <span id="errDescription"></span></p>
+        <textarea style="width: 350px; height: 100px;"
+         id="description" name='description' onblur="validDiscr()"></textarea><br>
+
+        <input type="button" value="Опубликовать" name="publicButton" id="publicButton" onclick="validForm(event)">
+        
+    	
+
+    </form>
+    
+</body>
+</html>
+
+
