@@ -37,27 +37,36 @@ function pushMouseButton(EO){
    console.log('Нажали на картинку');
 
    let currImg=EO.target;
-
+   document.body.appendChild(currImg);
+   
+    
    let currPosithionX=EO.pageX-currImg.offsetLeft;
    let currPosithionY=EO.pageY-currImg.offsetTop;
+   currImg.style.cursor='grabbing';
+
+   
 
 
    window.onmousemove=movingImg;
+      
 
    function movingImg(EO){
 
+      
       EO=EO||window.event;
       EO.preventDefault();
 
-      console.log('Потащили картинку');
-      
-      currImg.style.zIndex=1000;
+                  
       currImg.style.left=(EO.pageX-currPosithionX)+'px';
       currImg.style.top=(EO.pageY-currPosithionY)+'px';
    
-           
+   }  
    
-   }   
+   function cursorChange(EO){
+      
+      
+
+   }
 
 }
 
@@ -66,7 +75,13 @@ function upMouseButton(EO){
 
    EO=EO||window.event;
    window.onmousemove=null;
-   EO.target.style.zIndex=0;
+
+   let currImg=EO.target;
+   currImg.style.cursor='default';
+   
+   
+   
+   
    console.log('Кнопку отпустили, картинку не тащат');
 
 }
