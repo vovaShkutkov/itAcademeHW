@@ -1,0 +1,247 @@
+body{
+    background-color: black;
+    background-image: url(../img/bg.jpg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 30%;
+   
+}
+
+div#customerSetting2 input{
+    width: 99%;
+
+}
+
+#timer5sec{
+    display: none;
+}
+
+#timerStandart{
+    display: none;
+    
+}
+
+
+
+
+.base-timer__circle {
+    fill: none;
+    stroke: none;
+}
+
+.base-timer__svg{
+    
+    position: absolute;
+    margin-top: 2em;
+}
+
+.base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+}
+
+.base-timer__path-remaining {
+   
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    stroke: yellow;
+  }
+  
+  .base-timer__svg {
+    /* Переворачиваем кольцо и задаем движение анимации слева направо */
+    transform: scaleX(-1);
+  }
+
+#svgTimeBlock{
+    
+    width: 100%;
+    height: auto;
+    
+    
+
+}
+
+div#soundTimeBlock{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-family: "linea-music-10";
+    justify-content: center;
+    margin-top: 1em;
+    
+}
+
+.buttonM{
+
+    height:3em;
+    width: 3em;
+    
+}
+
+.buttonM:hover{
+    transform: scale(1.2);
+}
+
+div#timerAnchor{
+    
+    height: 5em;
+    line-height: 5em;
+    color: aliceblue;
+    font-size: 5em;
+    padding-top: 1em;
+    width: 100%;
+    text-align: center;
+    
+}
+div#timerAnchor2{
+    
+    height: 5em;
+    line-height: 5em;
+    color: aliceblue;
+    font-size: 5em;
+    padding-top: 1em;
+    width: 100%;
+    text-align: center;
+    
+}
+
+#custSetting{
+    display: none;
+}
+
+#endTraining{
+    display: none;
+}
+
+div.general{
+    border: #d0dd1a solid 7px;
+    position: center center;
+    width: 540px;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+p{
+    color: aliceblue;
+    font-size: 1.2em;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    padding-top: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+p.startTxt{
+    color: white;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 0.5em;
+    font-size: 2em;
+    font-family: 'Oswald', sans-serif;
+}
+
+div.RoundsTxt{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    color: white;
+    bottom: 0;
+    font-size: 2em;
+    font-family: 'Oswald', sans-serif;
+}
+label{
+    color: aliceblue;
+    font-family: 'Oswald', sans-serif;
+}
+
+#startButton{
+    margin: 0 auto;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
+    padding: 0.5em 1em 0.5em 1em;
+    margin-bottom: 1em;
+}
+
+#startButton:hover{
+    transform: scale(1.05);
+}
+
+div #selectBlock{
+    width: 100%;
+    text-align: center;
+}
+
+div #customerSetting1{
+    font-size: 1.2em;
+    font-family: 'Oswald', sans-serif;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: center;
+}
+
+div #customerSetting2{
+    display: none;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: left;
+}
+
+div#timer321{
+    display: none;
+    font-size: 3em;
+    list-style: 100%;
+    color: aliceblue;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+div#countdown321 #countCircle{
+    display: block;
+    margin-top: 20px auto;
+    width: 80%;
+    border-radius: 50%;
+    border: grey 7px solid;
+}
+
+#timerStandart{
+    display: none;
+}
+
+div#endTraining{
+    display: none;
+}
+
+div p.waitTime{
+
+    font-size: 5em;
+    color: white;
+    text-align: center;
+    animation-name: puls;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes puls{
+
+    0% {transform: scale(1.0);
+        -webkit-transform: scale(1.0);;}
+    
+    100% {transform: scale(1.5);
+        -webkit-transform: scale(1.5);}
+}

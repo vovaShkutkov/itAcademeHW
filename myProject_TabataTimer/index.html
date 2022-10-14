@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabata-Timer</title>
+    <link rel="stylesheet" href="css/reset_style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/m_style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+    </style>
+</head>
+<body>
+
+    <div id="startMenu" class="general">
+
+       <p>Добро пожаловать на страницу интервального таймера.Данный таймер дает возможность настроить время подготовки,
+        работы, отдыха, отдыха между сетами,
+         время успокоиться, количество циклов и сетов.
+         Интервалы могут быть настроены индивидуально.</p>
+       <p class="smallScreen">С этим интервальным таймером вы можете создать любую интервальную тренировку с любой последовательностью интервалов.</p>
+        
+        <p class="startTxt">Для старта нажми "НАЧАТЬ!"</p>
+        
+            <p>*Cтандартный таймер - это таймер для концентрации с расслабляющей музыкой для работы или учебы на 30минут.</p>
+            
+       
+        
+        <form name="startingButton">
+            <p><input type="button" value="НАЧАТЬ!" onclick="checkCustomerSetting()" id="startButton"></p>
+        </form>
+        <div id="selectBlock">
+            <p>Выберите вид таймера</p>
+
+                       
+            <input type="radio" id="typeTr1" name="typeTraining" value="1" checked onchange="validSetting()">
+            <label for="typeTr1" alt="5 кругов(45/15)">Стандартный</label>
+
+            <input type="radio" id="typeTr2" name="typeTraining" value="2" onchange="validSetting()">
+            <label for="typeTr2">Пользовательский</label>
+
+           
+            <div id="customerSetting2" style=" width:80%; border: 2px solid grey; ">
+               
+                <form class="custSet2">
+                    <label for="countRounds">К-во кругов</label><span id="errCountRounds" style="color: red;"></span><br>
+                    <input type="text" name="countRounds" id="countRounds" placeholder="5" onblur="validRoundSet()"><br>
+                    
+                    <label for="countWork">Время работы(сек.).</label><span id="errCountWork" style="color: red;"></span><br>
+                    <input type="text" name="countWork" id="countWork" placeholder="45" onblur="validWorkSet()"><br>
+                    
+                    
+                    
+
+                    <label for="countRest">Время отдыха(сек.).</label><span id="errCountRest" style="color: red;"></span><br>
+                    <input type="text" name="countRest" id="countRest" placeholder="15" onblur="validRestSet()"><br>
+                    
+                    
+                    
+
+                    <input type="reset" value="Сброс" style="float: right;" onclick="settingsReset()">
+                    
+                    
+                </form>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <div id="timer5sec" class="general">
+
+        <p class="waitTime" id="secCount5">
+        <audio id="countSignal" preload>
+            <source src="audio\bip.ogg" type="audio/ogg; codecs=vorbis">
+            <source src="audio\bip.mp3" type="audio/mpeg">
+        </audio>
+        </p>
+     
+    </div>
+<!-- *****************Блок стандартного таймера************************** -->
+    <div id="timerStandart" class="general">
+
+        <audio id="bgSound" preload>
+            <source src="audio\1.OGG" type="audio/OGG codecs=vorbis">
+            <source src="audio\1.mp3" type="audio/mpeg">
+            
+        </audio>
+
+        <div id="soundTimeBlock">
+
+            <button onclick="play()" class="material-icons buttonM" title="Воспроизвести">play_circle_outline</button>
+            <button onclick="pause()" class="material-icons buttonM" title="Пауза">pause_circle_outline</button>
+            <button onclick="restart()" class="material-icons buttonM" title="Рестарт">replay</button>
+            <button onclick="mute()" class="material-icons buttonM" title="Без звука">volume_off</button>
+            <button onclick="quiet()" class="material-icons buttonM" title="Тихо">volume_down</button>
+            <button onclick="loudy()" class="material-icons buttonM" title="Громко">volume_up</button>
+
+
+            
+        </div>
+        <div id="svgTimeBlock">
+            
+            <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g class="base-timer__circle">
+                    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+                    <path
+        id="base-timer-path-remaining"
+        stroke-dasharray="283"
+        class="base-timer__path-remaining ${remainingPathColor}"
+        d="
+          M 50, 50
+          m -45, 0
+          a 45,45 0 1,0 90,0
+          a 45,45 0 1,0 -90,0
+        "
+      ></path>
+      
+                </g>
+            </svg>
+
+            
+
+        </div>
+        <div id="timerAnchor" style="text-align: center;"></div>
+        
+    </div>
+<!-- *****************Блок пользов таймера************************** -->
+    <div class="general" id="custSetting">
+        <audio id="bgSound2" preload>
+            <source src="audio\customerTimerBg.OGG" type="audio/OGG codecs=vorbis">
+            <source src="audio\customerTimerBg.mp3" type="audio/mpeg">
+            
+
+        </audio>
+
+        
+
+        <div id="soundTimeBlock">
+
+           
+            <button onclick="mute_cust()" class="material-icons buttonM" title="Без звука">volume_off</button>
+            <button onclick="quiet_cust()" class="material-icons buttonM" title="Тихо">volume_down</button>
+            <button onclick="loudy_cust()" class="material-icons buttonM" title="Громко">volume_up</button>
+
+
+            
+        </div>
+
+        <div id="RoundsTxt" class="RoundsTxt"><p>Раунд <span id="roundCounter"></span> из <span id="custRounds"></span></p></div>
+
+        <div id="svgTimeBlock">
+            
+            <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g class="base-timer__circle">
+                    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+                    <path
+        id="base-timer-path-remaining2"
+        stroke-dasharray="283"
+        class="base-timer__path-remaining ${remainingPathColor}"
+        d="
+          M 50, 50
+          m -45, 0
+          a 45,45 0 1,0 90,0
+          a 45,45 0 1,0 -90,0
+        "
+      ></path>
+      
+                </g>
+            </svg>
+
+            
+
+        </div>
+        <div id="timerAnchor2" style="text-align: center;"></div>
+        
+        
+        
+    </div>
+    </div>
+
+    <div id="endTraining" class="general">
+
+        <p class="startTxt">Время вышло</p>
+        <p >Для повтора нажми кнопку "Начать заново"</p>
+
+        <p><input type="button" value="НАЧАТЬ ЗАНОВО" onclick="reloadPage()" id="startButton"></p>
+        
+
+    </div>
+
+    
+    
+    <script src="js/script_main.js"></script>
+    <script src="js/script_add.js"></script>
+    
+</body>
+</html>
